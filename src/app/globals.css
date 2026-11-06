@@ -1,0 +1,314 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tokens de AgendaCol (DESIGN.md). HSL para usarlos con opacidad en Tailwind. */
+@layer base {
+  :root {
+    --ac-noche: 215 51% 15%; /* #13233A barra superior */
+    --ac-noche-claro: 215 38% 23%; /* hover en la barra */
+    --ac-niebla: 216 29% 97%; /* #F4F6F9 fondo */
+    --ac-niebla-oscura: 213 24% 93%; /* #E9EDF2 fuera de horario */
+    --ac-papel: 240 100% 100%; /* #FEFEFF superficies */
+    --ac-laguna: 174 83% 26%; /* #0B7A70 acción */
+    --ac-laguna-hondo: 174 85% 21%; /* #08655D hover */
+    --ac-laguna-claro: 171 48% 94%; /* #EAF7F5 activo */
+    --ac-foco: 174 77% 33%; /* #13968A anillo */
+    --ac-tinta: 216 44% 14%; /* #142033 texto */
+    --ac-pizarra: 214 19% 36%; /* #4B5A6E secundario */
+    --ac-neblina: 215 13% 45%; /* #637082 ayudas (4,6 : 1 sobre niebla) */
+    --ac-borde: 212 22% 89%; /* #DDE3EA */
+    --ac-borde-fuerte: 213 20% 81%; /* #C5CED9 */
+    --ac-sobre-noche: 210 27% 96%; /* #F3F6F9 */
+    --ac-sobre-noche-suave: 213 18% 73%; /* #AEB9C7 */
+    --ac-demo-fondo: 41 100% 93%; /* #FFF4DB */
+    --ac-demo-texto: 41 100% 21%; /* #6B4A00 */
+    --ac-exito: 146 67% 29%; /* #187B42 */
+    --ac-error: 0 68% 48%; /* #CC2727 */
+    --ac-aviso: 40 90% 30%; /* #8F6208 */
+    --ac-info: 209 70% 42%; /* #206DB5 */
+    --ac-info-fondo: 210 79% 95%; /* #EAF3FC */
+    --ac-exito-fondo: 138.5 76.5% 96.7%; /* #F0FDF4 (verde 50) */
+    --ac-error-fondo: 0 85.7% 97.3%; /* #FEF2F2 (rojo 50) */
+    --ac-aviso-fondo: 48 100% 96.1%; /* #FFFBEB (ámbar 50) */
+    --ac-sombra: 216 44% 14%; /* color de las sombras (tinta) */
+
+    /* Estados de la cita (DESIGN.md §2): fondo · borde izquierdo · texto */
+    --estado-reservado-fondo: #e0f2fe;
+    --estado-reservado-borde: #38bdf8;
+    --estado-reservado-texto: #075985;
+    --estado-confirmado-fondo: #fef3c7;
+    --estado-confirmado-borde: #f59e0b;
+    --estado-confirmado-texto: #78350f;
+    --estado-asiste-fondo: #fae8ff;
+    --estado-asiste-borde: #e879f9;
+    --estado-asiste-texto: #86198f;
+    --estado-no-asistio-fondo: #ffedd5;
+    --estado-no-asistio-borde: #fb923c;
+    --estado-no-asistio-texto: #9a3412;
+    --estado-pendiente-fondo: #ffe4e6;
+    --estado-pendiente-borde: #f43f5e;
+    --estado-pendiente-texto: #9f1239;
+    --estado-en-espera-fondo: #ecfccb;
+    --estado-en-espera-borde: #84cc16;
+    --estado-en-espera-texto: #3f6212;
+    --estado-cancelado-fondo: #f1f5f9;
+    --estado-cancelado-borde: #94a3b8;
+    --estado-cancelado-texto: #475569;
+    --clase-fondo: #ffedd5;
+    --clase-borde: #ea580c;
+    --clase-texto: #7c2d12;
+    --bloqueo-raya-1: #e2e8f0;
+    --bloqueo-raya-2: #cbd5e1;
+    --bloqueo-texto: #334155;
+
+    /* Iniciales de los clientes en celular (fondo · texto) */
+    --inicial-rosa-fondo: #fce7f3;
+    --inicial-rosa-texto: #9d174d;
+    --inicial-durazno-fondo: #ffedd5;
+    --inicial-durazno-texto: #9a3412;
+    --inicial-menta-fondo: #d1fae5;
+    --inicial-menta-texto: #065f46;
+    --inicial-cielo-fondo: #e0f2fe;
+    --inicial-cielo-texto: #075985;
+    --inicial-ambar-fondo: #fef3c7;
+    --inicial-ambar-texto: #92400e;
+    --inicial-laguna-fondo: #ccfbf1;
+    --inicial-laguna-texto: #115e59;
+
+    /* Gráficos (reportes e inicio) */
+    --graf-serie-1: #0d8f84;
+    --graf-serie-2: #e06a2c;
+    --graf-serie-3: #6250d6;
+    --graf-anterior: #9aa6b6;
+    --graf-calor-1: #66bdb1;
+    --graf-calor-2: #2e9c8f;
+    --graf-calor-3: #0d7a6f;
+    --graf-calor-4: #07554d;
+    --graf-vacia: #eef1f5;
+
+    /* Alias para shadcn/ui */
+    --background: var(--ac-niebla);
+    --foreground: var(--ac-tinta);
+    --card: var(--ac-papel);
+    --card-foreground: var(--ac-tinta);
+    --popover: var(--ac-papel);
+    --popover-foreground: var(--ac-tinta);
+    --primary: var(--ac-laguna);
+    --primary-foreground: var(--ac-papel);
+    --secondary: var(--ac-niebla);
+    --secondary-foreground: var(--ac-tinta);
+    --muted: var(--ac-niebla);
+    --muted-foreground: var(--ac-pizarra);
+    --accent: var(--ac-laguna-claro);
+    --accent-foreground: var(--ac-tinta);
+    --destructive: var(--ac-error);
+    --destructive-foreground: var(--ac-papel);
+    --border: var(--ac-borde);
+    --input: var(--ac-borde);
+    --ring: var(--ac-foco);
+    --radius: 8px;
+
+    /* Campos nativos (fecha, hora, barras de desplazamiento) del color del sistema */
+    color-scheme: light dark;
+  }
+
+  /* Modo noche: sigue el del celular o el computador (DESIGN.md §2, Modo noche). Solo cambian los valores;
+     los nombres son los mismos, así ninguna pantalla necesita clases `dark:`. */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ac-noche: 216 50% 13%; /* #111E32 barra superior */
+      --ac-noche-claro: 215 36% 22%; /* #24354C */
+      --ac-niebla: 217 33% 8%; /* #0E131B fondo */
+      --ac-niebla-oscura: 217 32% 10%; /* #111822 fuera de horario */
+      --ac-papel: 215 30% 13%; /* #171F2B superficies */
+      --ac-laguna: 172 62% 46%; /* #2DBEAB acción (texto papel encima: 7,2 : 1) */
+      --ac-laguna-hondo: 172 62% 56%; /* #49D4C2 hover */
+      --ac-laguna-claro: 174 42% 17%; /* #193E3A activo */
+      --ac-foco: 172 62% 52%; /* #39D0BC anillo */
+      --ac-tinta: 214 33% 92%; /* #E4EAF1 texto */
+      --ac-pizarra: 214 18% 71%; /* #A8B3C2 secundario */
+      --ac-neblina: 214 13% 60%; /* #8C97A6 ayudas (5,6 : 1 sobre papel) */
+      --ac-borde: 215 22% 22%; /* #2C3644 */
+      --ac-borde-fuerte: 214 18% 31%; /* #414D5D */
+      --ac-sobre-noche: 210 27% 96%;
+      --ac-sobre-noche-suave: 213 18% 73%;
+      --ac-demo-fondo: 41 55% 14%; /* #372B10 */
+      --ac-demo-texto: 41 90% 72%; /* #F8CF77 */
+      --ac-exito: 146 50% 55%; /* #53C685 */
+      --ac-error: 0 80% 70%; /* #F07575 */
+      --ac-aviso: 40 85% 60%; /* #F0B642 */
+      --ac-info: 209 80% 70%; /* #75B5F0 */
+      --ac-info-fondo: 210 48% 16%; /* #15293C */
+      --ac-exito-fondo: 146 38% 13%; /* #152E1F */
+      --ac-error-fondo: 0 40% 15%; /* #361717 */
+      --ac-aviso-fondo: 40 45% 13%; /* #302612 */
+      --ac-sombra: 220 50% 2%;
+
+      --estado-reservado-fondo: #0f3650;
+      --estado-reservado-borde: #38bdf8;
+      --estado-reservado-texto: #bae6fd;
+      --estado-confirmado-fondo: #42310c;
+      --estado-confirmado-borde: #f59e0b;
+      --estado-confirmado-texto: #fde68a;
+      --estado-asiste-fondo: #46204e;
+      --estado-asiste-borde: #e879f9;
+      --estado-asiste-texto: #f5d0fe;
+      --estado-no-asistio-fondo: #482611;
+      --estado-no-asistio-borde: #fb923c;
+      --estado-no-asistio-texto: #fed7aa;
+      --estado-pendiente-fondo: #4c1b28;
+      --estado-pendiente-borde: #f43f5e;
+      --estado-pendiente-texto: #fecdd3;
+      --estado-en-espera-fondo: #293b12;
+      --estado-en-espera-borde: #84cc16;
+      --estado-en-espera-texto: #d9f99d;
+      --estado-cancelado-fondo: #222d3b;
+      --estado-cancelado-borde: #94a3b8;
+      --estado-cancelado-texto: #cbd5e1;
+      --clase-fondo: #482611;
+      --clase-borde: #f97316;
+      --clase-texto: #fed7aa;
+      --bloqueo-raya-1: #1c2533;
+      --bloqueo-raya-2: #263142;
+      --bloqueo-texto: #cbd5e1;
+
+      --inicial-rosa-fondo: #4a1d36;
+      --inicial-rosa-texto: #fbcfe8;
+      --inicial-durazno-fondo: #482611;
+      --inicial-durazno-texto: #fed7aa;
+      --inicial-menta-fondo: #133b2e;
+      --inicial-menta-texto: #a7f3d0;
+      --inicial-cielo-fondo: #0f3650;
+      --inicial-cielo-texto: #bae6fd;
+      --inicial-ambar-fondo: #42310c;
+      --inicial-ambar-texto: #fde68a;
+      --inicial-laguna-fondo: #123e3a;
+      --inicial-laguna-texto: #99f6e4;
+
+      --graf-serie-1: #2dbead;
+      --graf-serie-2: #f08a4b;
+      --graf-serie-3: #9a8cf5;
+      --graf-anterior: #5d6a7c;
+      --graf-calor-1: #17514b;
+      --graf-calor-2: #1f7a70;
+      --graf-calor-3: #2aa697;
+      --graf-calor-4: #5fd3c6;
+      --graf-vacia: #1c2533;
+    }
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Alto que ocupa abajo la barra de pestañas del celular (DESIGN.md §5, App de celular): píldora de 60 px,
+     16 px por debajo y 16 por encima. Desde md la barra no se ve y la variable vuelve a 0. */
+  :root {
+    --alto-pestanas: 0px;
+  }
+  html:has([data-pestanas]) {
+    --alto-pestanas: calc(92px + env(safe-area-inset-bottom));
+    scroll-padding-bottom: var(--alto-pestanas);
+  }
+  @media (min-width: 768px) {
+    html:has([data-pestanas]) {
+      --alto-pestanas: 0px;
+    }
+  }
+
+  body {
+    @apply bg-ac-niebla text-ac-tinta antialiased;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ac-foco));
+    outline-offset: 2px;
+  }
+
+  /* En celular, 16 px en los campos para que iOS no acerque la pantalla al tocarlos; desde la tableta vuelve el
+     tamaño de la base de Tailwind (100 %). Las clases de cada campo (`text-sm`…) siguen mandando. */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  @media (min-width: 768px) {
+    input,
+    select,
+    textarea {
+      font-size: 100%;
+    }
+  }
+
+  /* Fecha y hora del sistema: en el iPhone el control trae un ancho mínimo propio y se sale del recuadro
+     (lección de Ordify). Que nunca pase del campo y que el valor quede a la izquierda, como en los demás. */
+  input[type="date"],
+  input[type="time"] {
+    min-width: 0;
+    max-width: 100%;
+  }
+  input[type="date"]::-webkit-date-and-time-value,
+  input[type="time"]::-webkit-date-and-time-value {
+    text-align: left;
+  }
+  @supports (-webkit-touch-callout: none) {
+    input[type="date"],
+    input[type="time"] {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 80ms !important;
+      transition-duration: 80ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Área táctil de 44 × 44 px en celular (DESIGN.md §5) sin cambiar lo que se ve: un ::after invisible y centrado.
+     Solo en elementos sin posición propia (les pone `relative`); desde la tableta se apaga. */
+  .area-tactil {
+    position: relative;
+  }
+  .area-tactil::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max(100%, 44px);
+    height: max(100%, 44px);
+    transform: translate(-50%, -50%);
+  }
+  @media (min-width: 768px) {
+    .area-tactil {
+      position: static;
+    }
+    .area-tactil::after {
+      content: none;
+    }
+  }
+  .cifras {
+    font-variant-numeric: tabular-nums;
+  }
+  .rayas-bloqueo {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      var(--bloqueo-raya-1) 0,
+      var(--bloqueo-raya-1) 8px,
+      var(--bloqueo-raya-2) 8px,
+      var(--bloqueo-raya-2) 16px
+    );
+  }
+}
